@@ -146,7 +146,7 @@ const HERITAGE_CAROUSEL_DATA = [
   },
   {
     image: "https://5.imimg.com/data5/KM/GQ/GLADMIN-55370520/food-products-express-500x500.jpg",
-    title: "sreebhadra super market thiruvazhiyode,
+    title: "sreebhadra super market thiruvazhiyode",
     subtitle: "Driving innovation in Kerala's infrastructure",
     instagram: "https://www.instagram.com/royaltastefoodproducts/"
   },
@@ -158,7 +158,7 @@ const HERITAGE_CAROUSEL_DATA = [
   },
   {
     image: "https://www.viralspices.com/wp-content/uploads/2019/03/Organic-Products-Manufacturers-in-India-1.jpg",
-    title: "sreebhadra super market thiruvazhiyode,
+    title: "sreebhadra super market thiruvazhiyode",
     subtitle: "royal taste food products",
     instagram: "https://www.instagram.com/royaltastefoodproducts/"
  }
