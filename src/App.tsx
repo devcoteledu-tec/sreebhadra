@@ -156,12 +156,12 @@ const HERITAGE_CAROUSEL_DATA = [
     subtitle: "Redefining luxury rooms across palakkad",
     instagram: "https://www.instagram.com/sreebhadra_rooms/"
   },
-    {
+  {
     image: "https://www.viralspices.com/wp-content/uploads/2019/03/Organic-Products-Manufacturers-in-India-1.jpg",
     title: "sreebhadra super market thiruvazhiyode,
     subtitle: "royal taste food products",
     instagram: "https://www.instagram.com/royaltastefoodproducts/"
-  }
+ }
 ];
 
 // --- Components ---
