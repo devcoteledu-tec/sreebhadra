@@ -139,22 +139,28 @@ const PRODUCT_ITEMS = [
 
 const HERITAGE_CAROUSEL_DATA = [
   {
-    image: "https://st.depositphotos.com/2101611/3925/v/450/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg",
+    image: "https://media.schaefferhomes.com/372/2024/8/31/Full-007.jpg?width=1920&height=1280&fit=bounds&ois=a72dcae",
     title: "Sreebhadra construction,  suresh",
     subtitle: "Driving inovation in sreebhadra constraction",
     instagram: "https://www.instagram.com/sreebhadra_constructions/"
   },
   {
-    image: "https://st.depositphotos.com/2101611/3925/v/450/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg",
-    title: "sreebhadra foods ,arun",
+    image: "https://5.imimg.com/data5/KM/GQ/GLADMIN-55370520/food-products-express-500x500.jpg",
+    title: "sreebhadra super market thiruvazhiyode,
     subtitle: "Driving innovation in Kerala's infrastructure",
     instagram: "https://www.instagram.com/royaltastefoodproducts/"
   },
   {
-    image: "https://img.freepik.com/premium-vector/avatar03_885953-438.jpg?semt=ais_rp_50_assets&w=740&q=80",
-    title: "sreebhadra rooms, aswathi",
+    image: "https://w0.peakpx.com/wallpaper/460/608/HD-wallpaper-hotel-room-hotel-beautiful-art-house-romantic-black-yellow-luxury-rooms-bedrooms-decor-nice-beige-style.jpg",
+    title: "sreebhadra hotel rooms, palakkad",
     subtitle: "Redefining luxury rooms across palakkad",
     instagram: "https://www.instagram.com/sreebhadra_rooms/"
+  },
+    {
+    image: "https://www.viralspices.com/wp-content/uploads/2019/03/Organic-Products-Manufacturers-in-India-1.jpg",
+    title: "sreebhadra super market thiruvazhiyode,
+    subtitle: "royal taste food products",
+    instagram: "https://www.instagram.com/royaltastefoodproducts/"
   }
 ];
 
