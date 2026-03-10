@@ -607,7 +607,7 @@ const SocialSection = ({ isDark }: { isDark: boolean }) => {
             </div>
             <div className="mt-8">
               <h4 className={`text-3xl font-serif opacity-20 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
-                Equal Opportunity<br />An ideal
+                It is not about the years in your life, but the life in your years<br />An ideal
               </h4>
             </div>
             <div className="absolute bottom-8 right-8">
@@ -970,9 +970,14 @@ const FoundersSection = ({ isDark }: { isDark: boolean }) => {
               <p className="text-zinc-500 font-medium uppercase tracking-widest text-xs mt-1">Founder, Sreebhadra Group</p>
             </div>
 
-            <button className="mt-10 px-8 py-3 border border-zinc-300 rounded-lg text-zinc-700 font-bold hover:bg-zinc-50 transition-colors">
+            <a 
+              href="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_rp_50_assets&w=740&q=80"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-block px-8 py-3 border border-zinc-300 rounded-lg text-zinc-700 font-bold hover:bg-zinc-50 transition-colors"
+            >
               View Profile
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -1184,10 +1189,10 @@ const LandingPage = ({ isDark }: { isDark: boolean }) => {
   return (
     <main>
       <Hero isDark={isDark} />
+      <FoundersSection isDark={isDark} />
       <SocialSection isDark={isDark} />
       <AboutSection isDark={isDark} />
       <CareersSection isDark={isDark} />
-      <FoundersSection isDark={isDark} />
       <ProductsDisplay isDark={isDark} />
       <CommunitySection isDark={isDark} />
     </main>
