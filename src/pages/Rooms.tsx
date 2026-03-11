@@ -14,7 +14,7 @@ import {
 const EMAILJS_SERVICE_ID  = 'service_sreebhadra';
 const EMAILJS_TEMPLATE_ID = 'template_booking';
 const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-const OWNER_EMAIL         = 'epicdiscovery@gmail.com';
+const OWNER_EMAIL         = 'epicdiscovery2020@gmail.com';
 
 /* ═══════════════════════════════════════════════════════════
    DATA
@@ -331,6 +331,29 @@ function RoomCard({ loc, idx, onBook }: { loc: typeof LOCATIONS[number]; idx: nu
 }
 
 /* ═══════════════════════════════════════════════════════════
+   FIELD — top-level so it never re-mounts on parent re-render
+═══════════════════════════════════════════════════════════ */
+function Field({ label, val, set, type = 'text', ph = '' }: {
+  label: string; val: string; set: (v: string) => void; type?: string; ph?: string;
+}) {
+  return (
+    <div>
+      <label className="block text-[11px] font-black uppercase tracking-widest text-stone-400 mb-1.5">
+        {label}
+      </label>
+      <input
+        type={type}
+        value={val}
+        onChange={e => set(e.target.value)}
+        placeholder={ph}
+        autoComplete={type === 'email' ? 'email' : type === 'tel' ? 'tel' : 'name'}
+        className="w-full bg-stone-50 border-2 border-stone-200 focus:border-rose-400 focus:bg-white rounded-xl px-4 py-3 text-[13px] font-semibold text-stone-800 placeholder-stone-300 outline-none transition-colors"
+      />
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
    BOOKING MODAL
 ═══════════════════════════════════════════════════════════ */
 function BookingModal({ loc, onClose }: { loc: typeof LOCATIONS[number]; onClose:()=>void }) {
@@ -359,34 +382,79 @@ function BookingModal({ loc, onClose }: { loc: typeof LOCATIONS[number]; onClose
 
   const confirm = async () => {
     setBusy(true); setErr('');
+    const checkInStr  = fmt(ci,  true);
+    const checkOutStr = fmt(co,  true);
+    const bookedOn    = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
     try {
-      const p = { to_email:OWNER_EMAIL, guest_name:name, guest_email:email, guest_phone:phone,
-        location:loc.name, check_in:fmt(ci,true), check_out:fmt(co,true),
-        nights, guests, total:`₹${total.toLocaleString()}`,
-        special:req||'None', booked_on: new Date().toLocaleDateString('en-IN') };
+      // Template params — every field explicitly stringified so EmailJS receives clean values
+      const p: Record<string, string> = {
+        to_email:       OWNER_EMAIL,
+        reply_to:       email,
+        guest_name:     name,
+        guest_email:    email,
+        guest_phone:    phone,
+        property_name:  loc.name,
+        property_short: loc.shortName,
+        check_in:       checkInStr,
+        check_out:      checkOutStr,
+        nights:         String(nights),
+        guests:         String(guests),
+        room_rate:      `₹${loc.price.toLocaleString()} per night`,
+        subtotal:       `₹${subtotal.toLocaleString()}`,
+        gst_amount:     `₹${gst.toLocaleString()}`,
+        total_amount:   `₹${total.toLocaleString()}`,
+        special_requests: req.trim() || 'None',
+        booked_on:      bookedOn,
+      };
+
       if ((window as any).emailjs) {
-        await (window as any).emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, p, EMAILJS_PUBLIC_KEY);
+        await (window as any).emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          p,
+          EMAILJS_PUBLIC_KEY
+        );
       } else {
-        const s = encodeURIComponent(`Sreebhadra Booking — ${loc.shortName} (${name})`);
-        const b = encodeURIComponent(`NEW BOOKING\n\nGuest: ${name}\nEmail: ${email}\nPhone: ${phone}\nProperty: ${loc.name}\nCheck-in: ${fmt(ci,true)}\nCheck-out: ${fmt(co,true)}\nNights: ${nights} | Guests: ${guests}\nTotal: ₹${total.toLocaleString()}\nSpecial: ${req||'None'}`);
-        window.open(`mailto:${OWNER_EMAIL}?subject=${s}&body=${b}`, '_blank');
+        // Mailto fallback — opens default mail client with full booking details
+        const subject = encodeURIComponent(
+          `🏨 New Booking: ${loc.shortName} — ${name} (${checkInStr} to ${checkOutStr})`
+        );
+        const body = encodeURIComponent(
+          `═══════════════════════════════\n` +
+          `  SREEBHADRA ROOMS — NEW BOOKING\n` +
+          `═══════════════════════════════\n\n` +
+          `GUEST DETAILS\n` +
+          `─────────────\n` +
+          `Name    : ${name}\n` +
+          `Email   : ${email}\n` +
+          `Phone   : ${phone}\n\n` +
+          `BOOKING DETAILS\n` +
+          `───────────────\n` +
+          `Property : ${loc.name}\n` +
+          `Check-in : ${checkInStr}\n` +
+          `Check-out: ${checkOutStr}\n` +
+          `Nights   : ${nights}\n` +
+          `Guests   : ${guests}\n\n` +
+          `PRICE BREAKDOWN\n` +
+          `───────────────\n` +
+          `Room Rate : ₹${loc.price.toLocaleString()} × ${nights} nights = ₹${subtotal.toLocaleString()}\n` +
+          `GST (18%) : ₹${gst.toLocaleString()}\n` +
+          `TOTAL     : ₹${total.toLocaleString()}\n\n` +
+          `Special Requests: ${req.trim() || 'None'}\n\n` +
+          `Booked on: ${bookedOn}`
+        );
+        window.open(`mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`, '_blank');
       }
       setStep('done');
-    } catch { setErr('Could not send. Please try again or call us.'); }
+    } catch (e) {
+      console.error('Booking email error:', e);
+      setErr('Could not send confirmation email. Please try again or call us directly.');
+    }
     setBusy(false);
   };
 
   const STEP_LABELS = ['Dates','Details','Confirm'];
   const si = ['dates','details','confirm'].indexOf(step);
-
-  // Input component
-  const Field = ({ label, val, set, type='text', ph='' }: { label:string; val:string; set:(v:string)=>void; type?:string; ph?:string }) => (
-    <div>
-      <label className="block text-[11px] font-black uppercase tracking-widest text-stone-400 mb-1.5">{label}</label>
-      <input type={type} value={val} onChange={e=>set(e.target.value)} placeholder={ph}
-        className="w-full bg-stone-50 border-2 border-stone-200 focus:border-rose-400 focus:bg-white rounded-xl px-4 py-3 text-[13px] font-semibold text-stone-800 placeholder-stone-300 outline-none transition-all" />
-    </div>
-  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/65 backdrop-blur-md"
@@ -988,5 +1056,4 @@ export default function Rooms() {
     </div>
   );
 }
-
 
