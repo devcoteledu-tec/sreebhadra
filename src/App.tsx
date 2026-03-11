@@ -96,6 +96,13 @@ const HERO_SLIDES = [
     image: "https://media.istockphoto.com/id/1227210244/photo/flat-lay-view-at-kitchen-table-full-with-non-perishable-foods-spase-for-text.jpg?s=612x612&w=0&k=20&c=yoKYTbSTaHdBtRjgOUsDYBSB_0B10QxrR6lKH_36Hps=",
     link: "www.royaltastefoodproducts.in/",
     buttonText: "Shop Products"
+  },
+  {
+    title: "SR supermarket",
+    subtitle: "Quality products that bring families together.",
+    image: "https://png.pngtree.com/thumb_back/fh260/background/20220314/pngtree-photo-of-shelf-commodity-supermarket-image_1013437.jpg",
+    link: "www.royaltastefoodproducts.in/",
+    buttonText: "VIEW LOCATION"
   }
 ];
 
