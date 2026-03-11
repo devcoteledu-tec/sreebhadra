@@ -84,9 +84,9 @@ const HERO_SLIDES = [
     buttonText: "Explore Construction"
   },
   {
-    title: "Rooms Luxury Redefined",
-    subtitle: "https://t3.ftcdn.net/jpg/00/98/76/16/360_F_98761648_uLogNnSlCfVS0RmsVlXf7DLau3mS0vGk.jpg.",
-    image: "https://w0.peakpx.com/wallpaper/238/411/HD-wallpaper-modern-design-hallway-red-room-modern-apartment-interior-idea.jpg",
+    title: "Rooms Luxury Redefined SR rooms",
+    subtitle: "acess premium rooms over palakkad Dist",
+    image: "https://expressinnindia.com/wp-content/uploads/2024/07/Freesia-God-23.jpg",
     link: "https://sreebhadrarooms.com",
     buttonText: "Book Your Stay"
   },
