@@ -79,22 +79,22 @@ const HERO_SLIDES = [
   {
     title: "Mastering Construction",
     subtitle: "Building the future of Kerala with integrity and innovation.",
-    image: "https://t4.ftcdn.net/jpg/00/68/63/23/360_F_68632352_kmHLwFc2rQLmnKqn6gM0bhOPqxRTx8sY.jpg",
+    image: "https://m.media-amazon.com/images/I/71hS5RlM-3L.jpg",
     link: "https://www.sreebhadraconstructions.in",
     buttonText: "Explore Construction"
   },
   {
-    title: "Luxury Redefined",
-    subtitle: "Experience unparalleled comfort in our premium hotel rooms.",
+    title: "Rooms Luxury Redefined",
+    subtitle: "https://t3.ftcdn.net/jpg/00/98/76/16/360_F_98761648_uLogNnSlCfVS0RmsVlXf7DLau3mS0vGk.jpg.",
     image: "https://w0.peakpx.com/wallpaper/238/411/HD-wallpaper-modern-design-hallway-red-room-modern-apartment-interior-idea.jpg",
     link: "https://sreebhadrarooms.com",
     buttonText: "Book Your Stay"
   },
   {
-    title: "Taste of Tradition",
+    title: "Taste of Tradition SR foods",
     subtitle: "Quality food products that bring families together.",
     image: "https://media.istockphoto.com/id/1227210244/photo/flat-lay-view-at-kitchen-table-full-with-non-perishable-foods-spase-for-text.jpg?s=612x612&w=0&k=20&c=yoKYTbSTaHdBtRjgOUsDYBSB_0B10QxrR6lKH_36Hps=",
-    link: "https://royaltastefoodproducts.com",
+    link: "www.royaltastefoodproducts.in/",
     buttonText: "Shop Products"
   }
 ];
